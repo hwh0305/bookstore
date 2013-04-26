@@ -35,7 +35,7 @@ public class WeiXinServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String echostr = req.getParameter(ECHO_STR_KEY);
-        if (vaild(req)) {
+        if (validate(req)) {
             PrintWriter out = resp.getWriter();
             out.print(echostr);
             out.flush();
@@ -44,7 +44,7 @@ public class WeiXinServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (vaild(req)) {
+        if (validate(req)) {
             Map<String, String> reqMap = getRequest(req.getInputStream());
             String content = "什么？";
             String eventType = reqMap.get("MsgType");
@@ -61,7 +61,7 @@ public class WeiXinServlet extends HttpServlet {
         }
     }
 
-    private boolean vaild(HttpServletRequest req) {
+    private boolean validate(HttpServletRequest req) {
         String signature = req.getParameter(SIGNATURE_KEY);
         String timestamp = req.getParameter(TIMESTAMP_KEY);
         String nonce = req.getParameter(NONCE_KEY);
