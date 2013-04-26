@@ -27,8 +27,8 @@ public class WeiXinServlet extends HttpServlet {
     private static final long serialVersionUID = -686861629811893735L;
 
     private final String      SIGNATURE_KEY    = "signature";         // 微信加密签名
-    private final String      TIMESTAMP_KEY    = "timestamp";         // 时间戳
-    private final String      NONCE_KEY        = "nonce";             // 随机数
+    private final String      TIMESTAMP_KEY    = "timestamp";         // 时间戄1�7
+    private final String      NONCE_KEY        = "nonce";             // 随机敄1�7
     private final String      ECHO_STR_KEY     = "echostr";
     private final String      TOKEN            = "melody";
 
@@ -46,7 +46,7 @@ public class WeiXinServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (validate(req)) {
             Map<String, String> reqMap = getRequest(req.getInputStream());
-            String content = "什么？";
+            String content = "仄1�7么？";
             String eventType = reqMap.get("MsgType");
             if ("text".equals(eventType)) content = reqMap.get("Content");
             if ("event".equals(eventType) && "subscribe".equals(reqMap.get("Event")))  content = "青藤书屋欢迎你！";
@@ -66,13 +66,13 @@ public class WeiXinServlet extends HttpServlet {
         String timestamp = req.getParameter(TIMESTAMP_KEY);
         String nonce = req.getParameter(NONCE_KEY);
         if (signature != null) {
-            String sigStr = digest(timestamp, nonce);
+            String sigStr = encode(timestamp, nonce);
             return signature.equals(sigStr);
         }
         return false;
     }
 
-    private String digest(String timestamp, String nonce) {
+    private String encode(String timestamp, String nonce) {
         String signature = null;
         if (timestamp != null && nonce != null) {
             String[] srcs = { timestamp, nonce, TOKEN };
