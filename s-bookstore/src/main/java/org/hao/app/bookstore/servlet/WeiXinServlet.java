@@ -8,6 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -17,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.hao.app.bookstore.dto.ProductDTO;
+import org.hao.app.bookstore.dto.ProductQuery;
+import org.hao.app.bookstore.service.BookstoreServicesLocator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -46,10 +50,18 @@ public class WeiXinServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (validate(req)) {
             Map<String, String> reqMap = getRequest(req.getInputStream());
-            String content = "仄1�7么？";
+            String content = "什么？";
             String eventType = reqMap.get("MsgType");
-            if ("text".equals(eventType)) content = reqMap.get("Content");
-            if ("event".equals(eventType) && "subscribe".equals(reqMap.get("Event")))  content = "青藤书屋欢迎你！";
+            if ("text".equals(eventType)) {
+                content = reqMap.get("Content");
+                ProductQuery query = new ProductQuery();
+                query.setKeyword(content);
+                query.setNickName("颦儿814");
+                query.setCurrentPage(1);
+                List<ProductDTO> dtos = BookstoreServicesLocator.getProductService().queryProducts(query);
+                dtos.size();
+            }
+            if ("event".equals(eventType) && "subscribe".equals(reqMap.get("Event"))) content = "青藤书屋欢迎你！";
             resp.setContentType("application/xml");
             resp.setCharacterEncoding("UTF-8");
             PrintWriter out = resp.getWriter();

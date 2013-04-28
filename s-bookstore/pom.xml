@@ -17,5 +17,10 @@
 			<groupId>servletapi</groupId>
 			<artifactId>servlet-api</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.taobao.openapi</groupId>
+			<artifactId>client</artifactId>
+			<version>20130428</version>
+		</dependency>
 	</dependencies>
 </project>
