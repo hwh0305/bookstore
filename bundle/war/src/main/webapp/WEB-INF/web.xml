@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<servlet>
+		<servlet-name>hello</servlet-name>
+		<servlet-class>org.hao.bookstore.web.servlet.HelloServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>taobao</servlet-name>
+		<servlet-class>org.hao.bookstore.web.servlet.TaobaoCallbackServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>weixin</servlet-name>
+		<servlet-class>org.hao.bookstore.web.servlet.WeiXinServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>hello</servlet-name>
+		<url-pattern>/servlet/hello</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>taobao</servlet-name>
+		<url-pattern>/servlet/taobao</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>weixin</servlet-name>
+		<url-pattern>/servlet/weixin</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app> 
