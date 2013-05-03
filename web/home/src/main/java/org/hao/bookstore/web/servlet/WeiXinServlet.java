@@ -18,7 +18,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.hao.bookstore.modules.goods.BookstoreServicesLocator;
 import org.hao.bookstore.modules.goods.dto.ProductDTO;
 import org.hao.bookstore.modules.goods.dto.ProductQuery;
-import org.hao.bookstore.modules.weixin.WeiXinValidateHelper;
+import org.hao.bookstore.modules.weixin.utils.WeiXinValidateHelper;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
